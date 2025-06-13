@@ -20,6 +20,15 @@ table {
     border-bottom: 1px solid rgba(43, 43, 43, 0.5) !important;
   }
 
+  td:hover {
+    background-color: hsla(
+      var(--accent-h),
+      50%,
+      calc(var(--base-l) - 20%),
+      30%
+    ) !important;
+  }
+
   :is(th, td) {
     vertical-align: middle !important;
     padding: 0.5em 10px !important;
@@ -31,6 +40,10 @@ table {
 
   tr:not(:first-child) td {
     border-top: 0 !important;
+  }
+
+  .table-cell-wrapper {
+    display: table-cell;
   }
 
   /* #region Cornor Style */
