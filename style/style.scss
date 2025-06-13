@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+body {
+  --table-engine-radius-s: 4px;
+  --table-engine-radius-m: 6px;
+
+  --table-engine-border: 1px solid hsl(0, 0%, calc(96% - 6%));
+
+  --table-engine-animation: 200ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+table {
+  border: {
+    spacing: 0 !important;
+    collapse: initial !important;
+  }
+
+  th {
+    background-color: #eee !important;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.5) !important;
+  }
+
+  :is(th, td) {
+    vertical-align: middle !important;
+    padding: 0.5em 10px !important;
+
+    &:not(:first-child) {
+      border-left: 0 !important;
+    }
+  }
+
+  tr:not(:first-child) td {
+    border-top: 0 !important;
+  }
+
+  /* #region Cornor Style */
+  #m-table-corner {
+    &-top {
+      border-top: {
+        left-radius: var(--table-engine-radius-m);
+        right-radius: var(--table-engine-radius-m);
+      }
+    }
+
+    &-bottom {
+      border-bottom: {
+        left-radius: var(--table-engine-radius-m);
+        right-radius: var(--table-engine-radius-m);
+      }
+    }
+
+    &-top-left {
+      border-top-left-radius: var(--table-engine-radius-m);
+    }
+
+    &-top-right {
+      border-top-right-radius: var(--table-engine-radius-m);
+    }
+
+    &-bottom-left {
+      border-bottom-left-radius: var(--table-engine-radius-m);
+    }
+
+    &-bottom-right {
+      border-bottom-right-radius: var(--table-engine-radius-m);
+    }
+  }
+
+  #m-table-corner {
+    :is(&-top, &-top-left):has(.table-row-drag-handle:hover) {
+      border-top: {
+        left-radius: 0;
+      }
+    }
+
+    :is(&-bottom, &-bottom-left):has(.table-row-drag-handle:hover) {
+      border-bottom: {
+        left-radius: 0;
+      }
+    }
+  }
+
+  #m-table-corner-top {
+    :is(&, &-left, &-right):has(.table-col-drag-handle:hover) {
+      border-top: {
+        left-radius: 0;
+        right-radius: 0;
+      }
+    }
+  }
+
+  &:has(~ .table-row-btn:hover) {
+    #m-table-corner-bottom {
+      border-bottom: {
+        left-radius: 0;
+        right-radius: 0;
+      }
+
+      &-left {
+        border-bottom-left-radius: 0;
+      }
+
+      &-right {
+        border-bottom-right-radius: 0;
+      }
+    }
+  }
+
+  &:has(~ .table-col-btn:hover) {
+    #m-table-corner-top,
+    #m-table-corner-top-right {
+      border-top-right-radius: 0;
+    }
+
+    #m-table-corner-bottom,
+    #m-table-corner-bottom-right {
+      border-bottom-right-radius: 0;
+    }
+  }
+  /* #endregion */
+
+  li {
+    list-style-type: none;
+  }
+}
+
+/** 预览模式样式 */
+.table-wrapper {
+  width: 100% !important;
+
+  .table-col-btn {
+    border-top-right-radius: var(--table-engine-radius-s);
+    border-bottom-right-radius: var(--table-engine-radius-s);
+  }
+
+  .table-row-btn {
+    border-bottom-left-radius: var(--table-engine-radius-s);
+    border-bottom-right-radius: var(--table-engine-radius-s);
+  }
+
+  @media (hover: hover) {
+    :is(
+        .table-col-btn,
+        .table-row-btn,
+        .table-col-drag-handle,
+        .table-row-drag-handle
+      ):hover {
+      border: var(--table-engine-border) !important;
+      transition: var(--table-engine-animation) !important;
+    }
+
+    :is(tr:hover .table-row-drag-handle, th:hover .table-col-drag-handle) {
+      opacity: 1 !important;
+      transition: var(--table-engine-animation) !important;
+    }
+  }
+
+  .table-col-drag-handle {
+    left: 0;
+  }
+}

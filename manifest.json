@@ -1,0 +1,10 @@
+{
+  "id": "table-engine",
+  "name": "Table Engine",
+  "version": "1.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Optimize markdown experience.",
+  "author": "AruoTan",
+  "authorUrl": "https://github.com/AruoTan",
+  "isDesktopOnly": false
+}
