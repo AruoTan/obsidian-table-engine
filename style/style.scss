@@ -43,7 +43,19 @@ table {
   }
 
   .table-cell-wrapper {
-    display: table-cell;
+    &:not(:has(.cm-s-obsidian)) {
+      display: table-cell;
+    }
+    .cm-s-obsidian {
+      height: 100%;
+      .cm-editor {
+        height: 100%;
+        .cm-scroller {
+          flex-wrap: wrap;
+          align-content: center;
+        }
+      }
+    }
   }
 
   /* #region Cornor Style */
